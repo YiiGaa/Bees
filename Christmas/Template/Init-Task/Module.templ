@@ -1,0 +1,93 @@
+######DEFAULT######
+//STEP::Call @@name@@
+reader.parse(R"(@@param@@)", moduleParam);
+ret = START_MODULE("@@name@@", moduleParam, passParam);
+if(ERRORCODE_IsError(ret, {
+   @@skip@@
+})){
+    LOGGER_Error("Task interrupt! errorCode:"+ERRORCODE_GetCode(ret)+" ,message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    continue;
+}
+TOOLS_JsonClean(moduleParam);
+
+######DEFAULT######
+
+######CALL######
+//STEP-IN::Call ACT function
+LOGGER_LocateAdd("@@name@@");
+ret = @@name@@(passParam);
+LOGGER_LocateDelete();
+if(ERRORCODE_IsError(ret, {
+   @@skip@@
+})){
+    LOGGER_Error("Task interrupt!(CALL) errorCode:"+ERRORCODE_GetCode(ret)+" ,message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    continue;
+}
+######CALL######
+
+######SELECTOR-RETRY######
+//STEP-IN::SELECTOR-RETRY
+{
+    bool isRetryFirst = true;
+    selectorRetryData.push_back({@@retryTime@@, passParam});
+    do{
+        if(!isRetryFirst && @@sleepTime@@>0)
+            usleep(@@sleepTime@@);
+        if(isRetryFirst)
+            isRetryFirst = false;
+        selectorRetryData.back().first--;
+        passParam = selectorRetryData.back().second;
+        LOGGER_Debug("Action SELECTOR-RETRY, remain retryTime:"+ std::to_string(selectorRetryData.back().first) + ", passParam:"+ passParam.toStyledString());
+        @@module@@
+    }while(selectorRetryData.back().first>0 && ERRORCODE_IsError(ret, {@@skip@@}));
+    selectorRetryData.pop_back();
+}
+if(ERRORCODE_IsError(ret, {
+   @@skip@@
+})){
+    LOGGER_Error("Task interrupt!(SELECTOR-RETRY), errorCode:"+ERRORCODE_GetCode(ret)+", message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    continue;
+}
+
+######SELECTOR-RETRY######
+
+######SELECTOR-ERROR######
+//STEP-IN::SELECTOR-ERROR
+do{
+    @@module@@
+}while(false);
+if(ERRORCODE_IsError(ret, {
+   @@skip@@
+})){
+    LOGGER_Debug("Action SELECTOR-ERROR, errorCode:"+ERRORCODE_GetCode(ret)+", message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    do{
+        @@moduleError@@;
+    }while(false);
+}
+if(ERRORCODE_IsError(ret, {
+   @@skipError@@
+})){
+    LOGGER_Error("Task interrupt!(SELECTOR-ERROR) errorCode:"+ERRORCODE_GetCode(ret)+" ,message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    continue;
+}
+
+######SELECTOR-ERROR######
+
+######SELECTOR-SWITCH######
+//STEP-IN::SELECTOR-SWITCH
+{
+    std::string option = TOOLS_ParamGet("@@option@@", "bees get fail", passParam);
+    LOGGER_Debug("Action SELECTOR-SWITCH, option:"+option, moduleParam, passParam);
+    if(0);
+    @@switch@@
+    else
+        ret = ERR_Task_Switch_Lack;
+}
+if(ERRORCODE_IsError(ret, {
+   @@skip@@
+})){
+    LOGGER_Error("Task interrupt!(SELECTOR-SWITCH), errorCode:"+ERRORCODE_GetCode(ret)+", message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    continue;
+}
+
+######SELECTOR-SWITCH######

@@ -1,0 +1,46 @@
+{
+    "Xmas_path":"../Kernel/Task/Start/Start.hpp",
+    "file": {
+        "name":"Start",
+        "function":[
+            {
+                "name":"Start",
+                "module":[
+                    {
+                        "name":"_DataQueue",
+                        "param":{
+                            "_action":"create",
+                            "_identity":"Start>>Data",
+                            "_queueMaxLen":1
+                        }
+                    },{
+                        "name":"_BrokerThread",
+                        "param":{
+                            "_action":"create",
+                            "_identity":"Start>>SamplePush",
+                            "_call":"SamplePush"
+                        }
+                    },{
+                        "name":"_BrokerThread",
+                        "param":{
+                            "_action":"create",
+                            "_identity":"Start>>SampleGet",
+                            "_call":"SampleGet"
+                        }
+                    },{
+                        "name":"_BrokerThread",
+                        "param":{
+                            "_action":"wait all"
+                        }
+                    },{
+                        "name":"_DataQueue",
+                        "param":{
+                            "_action":"delete",
+                            "_identity":"Start>>Data"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

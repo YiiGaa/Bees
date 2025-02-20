@@ -1,0 +1,55 @@
+######SAMPLE######
+#include "Kernel/Module/@@module@@/@@module@@.hpp"
+#include "Kernel/Common/Common.hpp"
+#include <iostream>
+#include <string>
+
+/* The same function as "Kernel/Module/Module.hpp" */
+std::map<std::string, Module::Link*> moduleMap = {
+    {"@@module@@", new Module::@@module@@()},
+};
+ERROR_CODE START_MODULE(std::string module, Json::Value& moduleParam, Json::Value& passParam){
+    LOGGER_LocateAdd("M-"+module);
+    ERROR_CODE ret = (moduleMap[module])->Start(moduleParam, passParam);
+    LOGGER_LocateDelete();
+    return ret;
+}
+/* The same function as "Kernel/Module/Module.hpp" */
+
+int main(int argc, char *argv[]){
+    TOOLS_EndCrashListen(moduleMap);
+    Json::Value passParam = Json::objectValue;
+    Json::Value moduleParam = Json::objectValue;
+    ERROR_CODE ret = ERR_OK;
+    Json::Reader reader;
+
+    //STEP::Init log
+    LOGGER_InitSample();
+
+    //STEP::Make passParam for test
+    reader.parse(R"(
+        {
+            "xxx":"xxx"
+        }
+    )", passParam);
+
+    //STEP::Call module
+    reader.parse(R"(
+        {
+            "_action": ""
+        }
+    )", moduleParam);
+    ret = START_MODULE("@@module@@", moduleParam, passParam);
+    TOOLS_JsonClean(moduleParam);
+
+end:
+    //STEP::Print result
+    std::cout<<std::endl<<"errorCode:"<<ERRORCODE_GetCode(ret)<<", message:"<<ERRORCODE_GetMessage(ret)<<std::endl;
+    std::cout<<"passParam:"<<passParam.toStyledString()<<std::endl;
+
+    //STEP::Clean module and close log
+    TOOLS_EndClean();
+
+    return ERRORCODE_IsError(ret)?-1:0;
+}
+######SAMPLE######

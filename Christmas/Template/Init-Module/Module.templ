@@ -1,0 +1,100 @@
+######HPP######
+#ifndef   _MODULE_@@module@@_HPP_
+#define   _MODULE_@@module@@_HPP_
+
+#include "Kernel/Common/Common.hpp"
+#include "Kernel/Module/Link.hpp"
+#include <json/json.h>
+#include <map>
+#include <mutex>
+#include <shared_mutex>
+
+namespace Module{
+    class @@module@@: public Link{
+        //TIPS::Variables in the module
+        private:
+            typedef struct {
+                
+            } innerMark_t;
+            static std::map<std::string, innerMark_t*> innerMark;
+            static std::shared_mutex lockMark;
+
+        //TIPS::Action processing function
+        private:
+            ERROR_CODE MarkInit(Json::Value&, Json::Value&, ERROR_CODE);
+            ERROR_CODE MarkCheck(Json::Value&, Json::Value&, ERROR_CODE);
+            ERROR_CODE MarkDelete(Json::Value&, Json::Value&, ERROR_CODE);
+            ERROR_CODE DoStart(Json::Value&, Json::Value&, ERROR_CODE);
+        
+        public:
+            void Crash(int);
+            @@module@@();
+            ERROR_CODE Start(Json::Value&, Json::Value&);
+    };
+}
+
+#endif
+######HPP######
+
+######CPP######
+#include "Kernel/Module/@@module@@/@@module@@.hpp"
+
+using namespace Module;
+
+//TIPS::Constructor function
+//Each module will only have 1 object (created at program startup), please fully consider the impact of multithreading
+@@module@@::@@module@@(void){
+}
+
+//TIPS::Program end or crash will call this
+//Please note the impact of multithreading
+void @@module@@::Crash(int isClean = 0){
+    try{
+        //STEP::Print log
+        if(isClean)
+            LOGGER_Info("@@module@@ Clean deal");
+        else
+            LOGGER_Info("@@module@@ Crash deal");
+
+        //STEP::Do Clean
+
+    } catch (std::exception& e){
+        LOGGER_Error("@@module@@ Clean exception:"+std::string(e.what()));
+    } catch (...){
+        LOGGER_Error("@@module@@ Clean unknown exception, maybe Segmentation fault (core dumped)");
+    }
+}
+
+ERROR_CODE @@module@@::DoStart(Json::Value& moduleParam, Json::Value& passParam, ERROR_CODE ret){
+    try {
+        std::string _action = TOOLS_ParamRead("action", "", moduleParam, passParam);
+
+        if(_action=="xxx"){
+            //ret = this->XXXX(moduleParam, passParam, ret);
+        }
+        else if(_action=="xxx"){
+            //ret = this->XXXX(moduleParam, passParam, ret);
+        }
+        else{
+            ret = ERR_Module_@@module@@_Action_Illegal;
+        }
+    } catch (std::exception& e){
+        LOGGER_Error(std::string(e.what()), moduleParam, passParam);
+        return ERR_Module_@@module@@_Exception;
+    } catch (...){
+        LOGGER_Error("unknown exception, maybe Segmentation fault (core dumped)", moduleParam, passParam);
+        return ERR_Module_@@module@@_Exception;
+    }
+
+    return ret;
+}
+
+//TIPS::Module entrance
+ERROR_CODE @@module@@::Start(Json::Value& moduleParam, Json::Value& passParam){
+    LOGGER_Debug("Module-@@module@@ start", moduleParam, passParam);
+    ERROR_CODE ret = ERR_OK;
+    ret = this->DoStart(moduleParam, passParam, ret);
+    LOGGER_Debug("Module-@@module@@ end, errorCode:"+ERRORCODE_GetCode(ret)+", message:"+ERRORCODE_GetMessage(ret), moduleParam, passParam);
+    return ret;
+}
+######CPP######

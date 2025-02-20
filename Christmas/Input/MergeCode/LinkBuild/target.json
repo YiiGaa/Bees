@@ -1,0 +1,51 @@
+{
+    "Xmas_config":{
+        "@module@":"../Kernel/Module",
+        "@build@":"../Build",
+        "@template@":"./Template/LinkBuild",
+        "@root@":".."
+    },
+    "Xmas_clean":{},
+    "Xmas_task":[
+        {
+            "Xmas_target":"@build@/conanfile.py",
+            "Xmas_source":{
+                "Xmas_path":"@template@/Conan.templ", "Xmas_filter":"######DEFAULT######",
+                "@@lib@@":[
+                    {
+                        "Xmas_path":"@root@/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^(?![-@/])(.+?)$",
+                        "{libs}/{version}":"self.requires(\"{libs}/{version}\")"
+                    },{
+                        "Xmas_path":"@module@/?3?/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^(?![-@/])(.+?)$",
+                        "{libs}/{version}":"self.requires(\"{libs}/{version}\")"
+                    }
+                ]
+            }
+        },{
+            "Xmas_target":"@build@/CMakeLists.txt",
+            "Xmas_source":{
+                "Xmas_path":"@template@/CMake.templ", "Xmas_filter":"######DEFAULT######",
+                "@@target@@":"?1?",
+                "@@target name@@":"?2?",
+                "@@dynamic lib@@": [
+                    {
+                        "Xmas_path":"@root@/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^-(.+?)$",
+                        "-{libs}":"string(CONCAT LINKER_FLAGS \"${LINKER_FLAGS}\" \" -{libs}\")"
+                    },{
+                        "Xmas_path":"@module@/?3?/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^-(.+?)$",
+                        "-{libs}":"string(CONCAT LINKER_FLAGS \"${LINKER_FLAGS}\" \" -{libs}\")"
+                    }
+                ],
+                "@@variant@@": [
+                    {
+                        "Xmas_path":"@root@/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^@(.+?)$",
+                        "@{variant}":"set(CMAKE_CXX_FLAGS \"-D{variant} ${CMAKE_CXX_FLAGS}\")"
+                    },{
+                        "Xmas_path":"@module@/?3?/Once.Link", "Xmas_filter":"######Dependencies######", "Xmas_select":"^@(.+?)$",
+                        "@{variant}":"set(CMAKE_CXX_FLAGS \"-D{variant} ${CMAKE_CXX_FLAGS}\")"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "Xmas_path":"../Kernel/Task/??/??.hpp",
+        "taskFile": {
+            "name":"??",
+            "function":{
+                "name":"Start",
+                "module":"//Generate by ??.json"
+            }
+        }
+    },{
+        "Xmas_path":"../Kernel/Task/??/Sample.cpp",
+        "sampleFile": {
+            "Xmas_templ":"SAMPLE",
+            "name":"??"
+        }
+    },{
+        "Xmas_path":"./Input/GenCode/Task#??/config.json",
+        "xmasFile": {
+            "Xmas_templ":"CONFIG",
+            "name":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Task/??/??.json",
+        "xmasFile": {
+            "Xmas_templ":"TARGET",
+            "name":"??"
+        }
+    }
+]

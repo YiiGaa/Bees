@@ -1,0 +1,21 @@
+{
+    "version":"2.0=@@date@@",
+    "file":[
+        "@@file@@",
+        "@@load@@"
+    ],
+    "skip":[
+        "Once.Config",
+        "Kernel/Main.hpp",
+        "Kernel/Task/Task.hpp",
+        "Kernel/Module/Module.hpp",
+        "Kernel/Common/Config/Config.hpp",
+        "Kernel/Common/ErrorCode/ErrorCode.hpp",
+        "Kernel/Common/ErrorCode/ErrorCode.cpp",
+        "Christmas/Input/DownloadCode/Update#Module/target.json",
+        "Christmas/Input/DownloadCode/Update#Christmas/target.json",
+        "Christmas/Input/DownloadCode/Update#Bees/target.json",
+        "Christmas/Input/DownloadCode/Get#Module/target.json",
+        "Christmas/Input/ShellExcute/Task#Genrate/target.json"
+    ]
+}

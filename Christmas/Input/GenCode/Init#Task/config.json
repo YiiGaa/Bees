@@ -1,0 +1,12 @@
+{
+    "inputSign":"?",
+    "rewaitInput":"[task name]",
+    "isJudgeExist":true,
+    "isExistBackup":true,
+    "templatePath":{
+        "taskFile":"./Template/Init-Task/Task.templ",
+        "sampleFile":"./Template/Init-Task/Sample.templ",
+        "function":"./Template/Init-Task/Function.templ",
+        "xmasFile":"./Template/Init-Task/Xmas.templ"
+    }
+}

@@ -1,0 +1,7 @@
+[
+    {
+        "Xmas_shell":"sh build.sh",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    }
+]

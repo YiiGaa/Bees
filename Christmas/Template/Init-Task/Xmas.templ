@@ -1,0 +1,39 @@
+######CONFIG######
+{
+    "targetFile": "../Kernel/Task/@@name@@/@@name@@.json",
+    "inputSign":"?",
+    "rewaitInput":"",
+    "isJudgeExist":false,
+    "isExistBackup":false,
+    "isFillLack":true,
+    "templatePath":{
+        "file":"./Template/Init-Task/Task.templ",
+        "function":"./Template/Init-Task/Function.templ",
+        "module":"./Template/Init-Task/Module.templ",
+        "skip":"./Template/Init-Task/Module-Skip.templ",
+        "moduleError":"./Template/Init-Task/Module.templ",
+        "skipError":"./Template/Init-Task/Module-Skip.templ",
+        "switch":"./Template/Init-Task/Module-Switch.templ"
+    }
+}
+######CONFIG######
+
+######TARGET######
+{
+    "Xmas_path":"../Kernel/Task/@@name@@/@@name@@.hpp",
+    "file": {
+        "name":"@@name@@",
+        "function":[
+            {
+                "name":"Start",
+                "module":[
+                    {
+                        "name":"module name",
+                        "param":{}
+                    }
+                ]
+            }
+        ]
+    }
+}
+######TARGET######

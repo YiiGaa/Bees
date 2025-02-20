@@ -1,0 +1,96 @@
+{
+    "Xmas_config":{
+        "@module@":"../Kernel/Module",
+        "@task@":"../Kernel/Task",
+        "@bootstrap@":"../Bootstrap",
+        "@template@":"./Template/LinkModule",
+        "@kernel@":"../Kernel",
+        "@Christmas@":"../Christmas"
+    },
+    "Xmas_clean":{},
+    "Xmas_task":[
+        {
+            "Xmas_target":"@kernel@/Common/ErrorCode/ErrorCode.hpp",
+            "Xmas_source":{
+                "Xmas_path":"@template@/ErrorCode.templ", "Xmas_filter":"######HPP######",
+                "@@code@@":{
+                    "Xmas_path":"@module@/<>/Once.Link", "Xmas_filter":"######ErrorCode######", "Xmas_select":"(.+?):",
+                    ":": ","
+                }
+            }
+        },{
+            "Xmas_target":"@kernel@/Common/ErrorCode/ErrorCode.cpp",
+            "Xmas_source":{
+                "Xmas_path":"@template@/ErrorCode.templ", "Xmas_filter":"######CPP######",
+                "@@code@@":{
+                    "Xmas_path":"@module@/<>/Once.Link", "Xmas_filter":"######ErrorCode######", "Xmas_select":"(.+?)",
+                    "{code}:{message}":"{{code},{message}},"
+                }
+            }
+        },{
+            "Xmas_target":"@kernel@/Common/Config/Config.hpp",
+            "Xmas_source":{
+                "Xmas_path":"@template@/Config.templ", "Xmas_filter":"######CONFIG######",
+                "@@code@@":[
+                    {"Xmas_path":"../Once.Config", "Xmas_filter":"######Config######"},
+                    {"Xmas_path":"@module@/<>/Once.Config", "Xmas_filter":"######Config######"}
+                ]
+            }
+        },{
+            "Xmas_target":"@kernel@/Module/Module.hpp",
+            "Xmas_source":{
+                "Xmas_path":"@template@/Module.templ", "Xmas_filter":"######MODULE######",
+                "@@head@@":{
+                    "Xmas_path":"@module@/<>/Once.Link", "Xmas_filter":"-", "Xmas_select":"-",
+                    "":"#include \"Kernel/Module/<>/<>.hpp\""
+                },
+                "@@code@@":{
+                    "Xmas_path":"@module@/<>/Once.Link", "Xmas_filter":"-", "Xmas_select":"-",
+                    "":"{\"<>\", new <>()},"
+                }
+            }
+        },{
+            "Xmas_target":"@kernel@/Task/Task.hpp",
+            "Xmas_source":{
+                "Xmas_path":"@template@/Task.templ", "Xmas_filter":"######TASK######",
+                "@@head@@":{
+                    "Xmas_path":"@task@/<>/<>.hpp", "Xmas_filter":"-", "Xmas_select":"-",
+                    "":"#include \"Kernel/Task/<>/<>.hpp\""
+                },
+                "@@code@@":[
+                    {
+                        "Xmas_path":"@task@/<>/<>.hpp", "Xmas_select":"ERROR_CODE (Start)\\(",
+                        "ERROR_CODE Start(":"{\"<>\", <>::Start},"
+                    }
+                ],
+                "@@function@@":[
+                    {
+                        "Xmas_path":"@task@/<>/<>.hpp", "Xmas_select":"ERROR_CODE (?!Start)(.+?)\\(",
+                        "ERROR_CODE {function}(":"{\"<>::{function}\", <>::{function}},"
+                    }
+                ]
+            }
+        },{
+            "Xmas_target":"@Christmas@/Input/ShellExcute/Task#Genrate/target.json",
+            "Xmas_source":{
+                "Xmas_path":"@Christmas@/Template/Init-Task/GenrateAll.templ",
+                "Xmas_filter":"######BODY######",
+                "@@Setting@@":[
+                    {
+                        "Xmas_path":"@task@/<>/<>.hpp",
+                        "Xmas_filter":"-", "Xmas_select":"-",
+                        "":{
+                            "Xmas_path":"@Christmas@/Template/Init-Task/GenrateAll.templ",
+                            "Xmas_filter":"######TASK######",
+                            "@@Task@@":"<>"
+                        }
+                    },
+                    {
+                        "Xmas_path":"@Christmas@/Template/Init-Task/GenrateAll.templ",
+                        "Xmas_filter":"######LINK######"
+                    }
+                ]
+            }
+        }
+    ]
+}

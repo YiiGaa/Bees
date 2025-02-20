@@ -1,0 +1,12 @@
+[
+    {
+        "Xmas_shell":"sh make.sh",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"./sample",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    }
+]

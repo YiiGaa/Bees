@@ -1,0 +1,52 @@
+[
+    {
+        "Xmas_shell":"python3 Christmas.py Input/ShellExcute/Task#Genrate",
+        "Xmas_cwd":".",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"python3 Christmas.py Input/CleanCode/Delete#Build",
+        "Xmas_cwd":".",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"mkdir Build",
+        "Xmas_cwd":"..",
+        "Xmas_judge":false
+    },
+    {
+        "Xmas_shell":"echo 'python3 ../Christmas/Christmas.py ShellExcute/Build#Boot'>Boot.sh",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"cp Boot.sh build.sh",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"python3 Christmas.py Input/MergeCode/LinkBuild boot '' '*'",
+        "Xmas_cwd":".",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"conan install . --output-folder=Build --build=missing -s build_type=Release",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":". Build/conanbuild.sh && cmake . --preset conan-release",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"echo 'make -C Build/ -j4'>make.sh",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    },
+    {
+        "Xmas_shell":"make -C Build/ -j4",
+        "Xmas_cwd":"../Build",
+        "Xmas_judge":true
+    }
+]

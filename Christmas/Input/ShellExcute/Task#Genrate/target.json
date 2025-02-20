@@ -1,0 +1,22 @@
+[
+        {
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#Start",
+            "Xmas_cwd":".",
+            "Xmas_judge":true
+        },
+        {
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#SamplePush",
+            "Xmas_cwd":".",
+            "Xmas_judge":true
+        },
+        {
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#SampleGet",
+            "Xmas_cwd":".",
+            "Xmas_judge":true
+        },
+        {
+            "Xmas_shell":"python3 Christmas.py Input/MergeCode/LinkModule",
+            "Xmas_cwd":".",
+            "Xmas_judge":true
+        }
+]

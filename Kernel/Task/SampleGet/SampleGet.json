@@ -1,0 +1,49 @@
+{
+    "Xmas_path":"../Kernel/Task/SampleGet/SampleGet.hpp",
+    "file": {
+        "name":"SampleGet",
+        "function":[
+            {
+                "name":"Do",
+                "module":[
+                    {
+                        "name":"_DataQueue",
+                        "param":{
+                            "_action":"pull",
+                            "_identity":"Start>>Data",
+                            "_resultKey":"$data",
+                            "_isPop":true
+                        }
+                    },{
+                        "name":"_DataFilling",
+                        "param":{
+                            "_action":"set",
+                            "_setting":{
+                                "$log":"** Get data::+get##$data"
+                            }
+                        }
+                    },{
+                        "name":"_BrokerLogger",
+                        "param":{
+                            "_action":"info",
+                            "_message":"get##$log"
+                        }
+                    }
+                ]
+            },{
+                "name":"Start",
+                "module":[
+                    {
+                        "name":"_BrokerCall",
+                        "param":{
+                            "_action":"call",
+                            "_call":"SampleGet::Do",
+                            "_param":{},
+                            "_loopCount":10
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

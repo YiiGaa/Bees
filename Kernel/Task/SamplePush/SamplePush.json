@@ -1,0 +1,57 @@
+{
+    "Xmas_path":"../Kernel/Task/SamplePush/SamplePush.hpp",
+    "file": {
+        "name":"SamplePush",
+        "function":[
+            {
+                "name":"Do",
+                "module":[
+                    {
+                        "name":"_DataFilling",
+                        "param":{
+                            "_action":"set",
+                            "_setting":{
+                                "$data":"random id"
+                            }
+                        }
+                    },{
+                        "name":"_DataFilling",
+                        "param":{
+                            "_action":"set",
+                            "_setting":{
+                                "$log":"** Push data::+get##$data"
+                            }
+                        }
+                    },{
+                        "name":"_BrokerLogger",
+                        "param":{
+                            "_action":"info",
+                            "_message":"get##$log"
+                        }
+                    },{
+                        "name":"_DataQueue",
+                        "param":{
+                            "_action":"push",
+                            "_identity":"Start>>Data",
+                            "_data":"get##$data",
+                            "_isFullWait":true
+                        }
+                    }
+                ]
+            },{
+                "name":"Start",
+                "module":[
+                    {
+                        "name":"_BrokerCall",
+                        "param":{
+                            "_action":"call",
+                            "_call":"SamplePush::Do",
+                            "_param":{},
+                            "_loopCount":10
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

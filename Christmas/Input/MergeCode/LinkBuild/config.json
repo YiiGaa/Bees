@@ -1,0 +1,6 @@
+{
+    "inputSign":"?",
+    "rewaitInput":"[module/task/bootstrap] [module/task name] [Link name]",
+    "isJudgeExist":false,
+    "isExistBackup":false
+}

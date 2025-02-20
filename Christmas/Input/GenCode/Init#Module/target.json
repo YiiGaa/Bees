@@ -1,0 +1,49 @@
+[
+    {
+        "Xmas_path":"../Kernel/Module/??/??.hpp",
+        "moduleFile": {
+            "Xmas_templ":"HPP",
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/??.cpp",
+        "moduleFile": {
+            "Xmas_templ":"CPP",
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/Load.json",
+        "loadFile": {
+            "Xmas_templ":"DEFAULT",
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/Once.Link",
+        "linkFile": {
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/Once.Config",
+        "configFile": {
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/README.md",
+        "readmeFile": {
+            "Xmas_templ":"README",
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/README-en.md",
+        "readmeFile": {
+            "Xmas_templ":"README-en",
+            "module":"??"
+        }
+    },{
+        "Xmas_path":"../Kernel/Module/??/Sample.cpp",
+        "sampleFile": {
+            "Xmas_templ":"SAMPLE",
+            "module":"??"
+        }
+    }
+]

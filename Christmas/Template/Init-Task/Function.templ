@@ -1,0 +1,18 @@
+######DEFAULT######
+ERROR_CODE @@name@@(Json::Value &passParam){
+    //STEP::Init data
+    Json::Value moduleParam = Json::objectValue;
+    ERROR_CODE ret = ERR_OK;
+    Json::Reader reader;
+    std::vector<std::pair<int, Json::Value>> selectorRetryData;
+    LOGGER_Info("Task function @@name@@ start", moduleParam, passParam);
+
+    //STEP::Run module
+    do{
+        @@module@@
+    }while(false);
+    LOGGER_Info("Task function @@name@@ end", moduleParam, passParam);
+    return ret;
+};
+
+######DEFAULT######
