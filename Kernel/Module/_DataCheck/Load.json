@@ -1,0 +1,20 @@
+{
+    "version": "1.0=2025.01.12",
+    "publish": "2025.02.20",
+    "file": [
+        "Sample.cpp",
+        "__CheckParam.cpp",
+        "_DataCheck.cpp",
+        "Once.Config",
+        "Once.Link",
+        "README.md",
+        "_DataCheck.hpp",
+        "__Traverse.cpp",
+        "README-en.md",
+        "Load.json"
+    ],
+    "skip": [
+        "Once.Config"
+    ],
+    "customSkip": []
+}

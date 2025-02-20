@@ -5,6 +5,7 @@
 //int _keyInt = TOOLS_ParamRead("_keyInt", -1, moduleParam, passParam);
 //bool _keyBool = TOOLS_ParamRead("_keyBool", false, moduleParam, passParam);
 //double _keyDouble = TOOLS_ParamRead("_keyDouble", 0.0, moduleParam, passParam);
+//Json::Value temp = Json::objectValue;
 //Json::Value _keyValue = TOOLS_ParamRead("_keyValue", Json::objectValue, moduleParam, passParam);
 //Json::Value _keyArray = TOOLS_ParamRead("_keyArray", Json::arrayValue, moduleParam, passParam);
 //Json::Value _keyAny = TOOLS_ParamRead("_keyAny", Json::nullValue, moduleParam, passParam);

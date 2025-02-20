@@ -1,0 +1,19 @@
+{
+    "version": "1.0=2025.01.12",
+    "publish": "2025.02.20",
+    "file": [
+        "Sample.cpp",
+        "_BrokerLogger.hpp",
+        "Once.Config",
+        "Once.Link",
+        "_BrokerLogger.cpp",
+        "README.md",
+        "__Action.cpp",
+        "README-en.md",
+        "Load.json"
+    ],
+    "skip": [
+        "Once.Config"
+    ],
+    "customSkip": []
+}

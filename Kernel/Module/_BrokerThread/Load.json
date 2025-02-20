@@ -1,0 +1,21 @@
+{
+    "version": "1.0=2025.01.12",
+    "publish": "2025.02.20",
+    "file": [
+        "Sample.cpp",
+        "Once.Config",
+        "Once.Link",
+        "__Wait.cpp",
+        "_BrokerThread.hpp",
+        "__Create.cpp",
+        "README.md",
+        "_BrokerThread.cpp",
+        "__Data.cpp",
+        "README-en.md",
+        "Load.json"
+    ],
+    "skip": [
+        "Once.Config"
+    ],
+    "customSkip": []
+}

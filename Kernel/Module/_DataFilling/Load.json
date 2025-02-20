@@ -1,0 +1,23 @@
+{
+    "version": "1.0=2025.01.12",
+    "publish": "2025.02.20",
+    "file": [
+        "Sample.cpp",
+        "___Switch.cpp",
+        "___Traverse.cpp",
+        "___Filling.cpp",
+        "Once.Config",
+        "Once.Link",
+        "_DataFilling.cpp",
+        "_DataFilling.hpp",
+        "README.md",
+        "__Set.cpp",
+        "README-en.md",
+        "__Save.cpp",
+        "Load.json"
+    ],
+    "skip": [
+        "Once.Config"
+    ],
+    "customSkip": []
+}
