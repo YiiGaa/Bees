@@ -1,10 +1,10 @@
 <img src="design/logo.png" width="300" />
 
 - 最新稳定版本: 2.0=2025.02.20
-- 使用文档详见官网，[点击跳转使用手册](https://stoprefactoring.com/#content@content#framework/bees/)
+- 使用文档详见官网，[点击跳转使用手册](https://stoprefactoring.com/official/content?t=framework&p=bees&i=overview-overview)
 
 - Latest stable version: 2.0=2025.02.20
-- For the user manual, please refer to the official website, [click to jump to the user manual](https://stoprefactoring.com/#content@content#framework/bees/)
+- For the user manual, please refer to the official website, [click to jump to the user manual](https://stoprefactoring.com/official/content?t=framework&p=bees&i=overview-overview)
 
 # 编写Linux/Unix C++引擎程序-就像组装机械一样
 
