@@ -12,7 +12,7 @@ ERROR_CODE _BrokerCall::Call(Json::Value& moduleParam, Json::Value& passParam, i
     //STEP::Get setting
     std::string _call = TOOLS_ParamRead("_call", "", moduleParam, passParam);
     int _loopCount = TOOLS_ParamRead("_loopCount", 1, moduleParam, passParam);
-    int64_t _sleepTime = TOOLS_ParamRead("_sleepTime", 1000000LL, moduleParam, passParam);
+    int64_t _sleepTime = TOOLS_ParamRead("_sleepTime", (int64_t)1000000L, moduleParam, passParam);
     bool _isErrorStop = TOOLS_ParamRead("_isErrorStop", false, moduleParam, passParam);
     bool _isAdoptFunRet = TOOLS_ParamRead("_isAdoptFunRet", true, moduleParam, passParam);
     Json::Value _param = moduleParam.isMember("_param")?TOOLS_ParamRead("_param", Json::objectValue, moduleParam, passParam):passParam;

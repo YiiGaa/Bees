@@ -1,7 +1,7 @@
 #include "Kernel/Common/Tools/Tools.hpp"
 
 //std::string _keyStr = TOOLS_ParamRead("_keyStr", "-", moduleParam, passParam);
-//int64_t _key64 = TOOLS_ParamRead("_key64", -1LL, moduleParam, passParam);
+//int64_t _key64 = TOOLS_ParamRead("_key64", (int64_t)1000000L, moduleParam, passParam);
 //int _keyInt = TOOLS_ParamRead("_keyInt", -1, moduleParam, passParam);
 //bool _keyBool = TOOLS_ParamRead("_keyBool", false, moduleParam, passParam);
 //double _keyDouble = TOOLS_ParamRead("_keyDouble", 0.0, moduleParam, passParam);
