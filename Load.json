@@ -1,5 +1,5 @@
 {
-    "version": "2.0=2025.02.20",
+    "version": "2.0=2026.06.22",
     "file": [
         "Kernel/Module/Link.hpp",
         "Kernel/Module/Module.hpp",
