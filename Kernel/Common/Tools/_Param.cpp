@@ -17,7 +17,7 @@
 //              - It can be Json::arrayValue, means limiting '[]' type
 //              - It can be string type, means limiting string type
 //              - It can be int type, means limiting int type
-//              - It can be int64 type, like '1LL', means limiting '{}' type
+//              - It can be int64 type, like '1LL', means limiting int64 type
 //              - It can be bool type, means limiting bool type
 //              - It can be double type, means limiting double type
 //>>moduleParam::Get the value corresponding to the 'key' in this object

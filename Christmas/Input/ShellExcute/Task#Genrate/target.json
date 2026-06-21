@@ -1,16 +1,16 @@
 [
         {
-            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#Start",
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/Task#Start",
             "Xmas_cwd":".",
             "Xmas_judge":true
         },
         {
-            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#SamplePush",
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/Task#SamplePush",
             "Xmas_cwd":".",
             "Xmas_judge":true
         },
         {
-            "Xmas_shell":"python3 Christmas.py Input/GenCode/TASK#SampleGet",
+            "Xmas_shell":"python3 Christmas.py Input/GenCode/Task#SampleGet",
             "Xmas_cwd":".",
             "Xmas_judge":true
         },

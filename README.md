@@ -1,9 +1,9 @@
 <img src="design/logo.png" width="300" />
 
-- 最新稳定版本: 2.0=2025.02.20
+- 最新稳定版本: 2.1=2026.06.22
 - 使用文档详见官网，[点击跳转使用手册](https://stoprefactoring.com/official/content?t=framework&p=bees&i=overview-overview)
 
-- Latest stable version: 2.0=2025.02.20
+- Latest stable version: 2.1=2026.06.22
 - For the user manual, please refer to the official website, [click to jump to the user manual](https://stoprefactoring.com/official/content?t=framework&p=bees&i=overview-overview)
 
 # 编写Linux/Unix C++引擎程序-就像组装机械一样
@@ -183,6 +183,10 @@ Custom Task requires `Start` or other started `Task` to create threads and start
 
 # 历史版本
 
+## 2.1=2026.06.22
+- [bug] Linux系统下无法生成代码文件
+- [-] 更新Christmas2.4
+
 ## 2.0
 - 升级Christmas 2
 - 业务代码改为Json配置（不需要写代码）
@@ -196,6 +200,10 @@ Custom Task requires `Start` or other started `Task` to create threads and start
 - 模块迁移时，只需要克隆文件夹
 
 # Historical version
+
+## 2.1=2026.06.22
+- [bug] Cannot generate code files under Linux system
+- [-] Update Christmas2.4
 
 ## 2.0
 - Upgrade Christmas 2
